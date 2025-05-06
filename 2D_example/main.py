@@ -42,7 +42,7 @@ x_hifi_4, y_hifi_4 = generate_hifi_data(hifi_regions, hifi_regions_num_points)
 x_hifi_data = torch.cat([x_hifi_1, x_hifi_2, x_hifi_3, x_hifi_4], dim=0)
 y_hifi_data = torch.cat([y_hifi_1, y_hifi_2, y_hifi_3, y_hifi_4], dim=0)
 x_lofi_data, y_lofi_data = generate_lofi_data(lofi_regions, lofi_regions_num_points)
-x_test_data, y_test_data,_, _ = generate_test_data(test_num=1000)
+x_test_data, y_test_data,_, _ = generate_test_data(test_num=10000)
 x_valid_data, y_valid_data,_,_ = generate_test_data(test_num=100)
 
 # Create scalers
@@ -139,7 +139,7 @@ torch.save(model, directory + "/L_sto")
 H = torch.tensor([[0.003, 0], [0, 0.003]])
 beta = torch.tensor(3.0)
 
-for i in range(4):
+for i in range(2):
     directory_2 = "{:s}/{:s}/train_set_{}".format(direc_name, functional, i).replace('.', '_')
     os.makedirs(directory_2, exist_ok=True)
 

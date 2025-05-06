@@ -96,7 +96,7 @@ class NetAnyFunctional2D(nn.Module):
             for i in range(self.poly_degree + 1, 2 * self.poly_degree + 1):
                 D += getattr(self, f'A{i}') * input[:, 1] ** (i - self.poly_degree)
         elif self.functional == 'custom_1':
-            D += getattr(self, 'A') * input[:, 1]
+            D += getattr(self, 'A') * L_det
             D += getattr(self, 'B') * input[:, 0]
             D += getattr(self, 'C')
         elif self.functional == 'custom_2':

@@ -154,12 +154,8 @@ for k in [0.01, 0.1, 0.15, 0.2]:
     # Default parameters
     H_band = torch.tensor(k)
     beta = torch.tensor(3)
-
-    # Avoid division by zero or infinity
     kde = GaussianKDE(x_hifi_scaled, H_band, beta=beta)
     kde_output = kde.transformed_output(x_test_scaled)
-    epsilon = 1e-3  # A slightly larger small value
-    kde_output = torch.clamp(kde_output, epsilon, 1 - epsilon)
 
     # Hyperparameters
     n_H = 100 * kde_output.squeeze()  # Choosen to be sufficiently large/ what is that number
@@ -185,12 +181,8 @@ for k in [0.1, 1.0, 10.0, 100.0]:
     # Default parameters
     H_band = torch.tensor(0.01)
     beta = torch.tensor(3)
-
-    # Avoid division by zero or infinity
     kde = GaussianKDE(x_hifi_scaled, H_band, beta=beta)
     kde_output = kde.transformed_output(x_test_scaled)
-    epsilon = 1e-3  # A slightly larger small value
-    kde_output = torch.clamp(kde_output, epsilon, 1 - epsilon)
 
     # Hyperparameters
     n_H = k * kde_output.squeeze()  # Choosen to be sufficiently large/ what is that number
@@ -219,8 +211,6 @@ for k in [0.1, 0.4, 0.7, 1.0]:
     # Default parameters
     H_band = torch.tensor(0.01)
     beta = torch.tensor(3)
-
-    # Avoid division by zero or infinity
     kde = GaussianKDE(x_hifi_scaled, H_band, beta=beta)
     kde_output = kde.transformed_output(x_test_scaled)
 

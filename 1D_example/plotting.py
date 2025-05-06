@@ -36,8 +36,6 @@ lofi_regions_num_points = [1000]
 
 
 x_lofi_data, y_lofi_data = generate_lofi_data(lofi_regions, lofi_regions_num_points)
-# x_hyper_data, y_hyper_data = generate_hifi_data(hifi_regions_hyper_train, hifi_regions_num_points_hyper_train)
-# x_hyper_valid_data, y_hyper_valid_data = generate_hifi_data(hifi_regions_hyper_valid, hifi_regions_num_points_hyper_valid)
 x_hifi_data, y_hifi_data = generate_hifi_data(hifi_regions, hifi_regions_num_points)
 x_test_data, y_test_data = generate_test_data(test_num=1000, start=0, end=1)
 x_valid_data, y_valid_data = generate_test_data(test_num=100)
@@ -48,8 +46,6 @@ scalers = create_scalers(x_lofi_data, y_lofi_data, x_hifi_data, y_hifi_data)
 # Scale data
 x_hifi_scaled, y_hifi_scaled = scale_data(x_hifi_data, y_hifi_data, scalers)
 x_lofi_scaled, y_lofi_scaled = scale_data(x_lofi_data, y_lofi_data, scalers)
-# x_hyper_scaled, y_hyper_scaled = scale_data(x_hyper_data, y_hyper_data, scalers)
-# x_hyper_valid_scaled, y_hyper_valid_scaled = scale_data(x_hyper_valid_data, y_hyper_valid_data, scalers)
 x_test_scaled, y_test_scaled = scale_data(x_test_data, y_test_data, scalers)
 x_valid_scaled, y_valid_scaled = scale_data(x_valid_data, y_valid_data, scalers)
 
@@ -185,7 +181,7 @@ for kappa in [0.1, 1.0, 10.0, 100.0]:
 beta = torch.tensor(3)
 band = torch.tensor(0.01)
 for beta_0 in [0.2, 0.8, 1.4, 2.0]:
-    model = torch.load(r"C:\Users\Suraj\Documents\01_git_repositories\01_phd_projects\Posterior_PDE_approach\changing_hypers_band_0_01_beta_3\polynomial_polynomial_on_l\degree_poly_1_degree_poly_l_3\final_beta_0_{}".format(beta_0))
+    model = torch.load(r"".format(beta_0))
     mu, var = model(x_test_scaled)
     mu_H, mu_L, mu_D, H = unconcatenate_mu(mu)
     var_H, var_L, var_D = unconcatenate_var(var)
